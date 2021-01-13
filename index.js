@@ -10,7 +10,7 @@ client.on('ready', async () => {
     console.log('ready')
     client.user.setPresence({
         activity: {
-            name: '!zgaduj, !zgaduj liczba1 liczba2, !topka',
+            name: '!zgaduj, !zgaduj liczba1 liczba2, !topka, !topka zwyciestwa',
             type: 0,
         }
     })
