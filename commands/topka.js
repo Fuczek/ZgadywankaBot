@@ -24,10 +24,12 @@ module.exports = {
                 const new2 = array.reduce(reducer)
                 const median = (new2/array.length).toFixed(2)
                 text += `${i+1}. ${players[i].playerName} za ${players[i].fastestgame} razem!
-    Średnio za ${median} razem \n`
+    Średnio za ${median} razem
+    (Łącznie ${players[i].wins} zwycięstw)\n`
             } else {
                 text += `${i+1}. ${players[i].playerName} za ${players[i].fastestgame} razem!
-    Nie ma średniej :( Za wcześnie grał.\n`
+    Nie ma średniej :( Za wcześnie grał.
+    (Łącznie ${players[i].wins} zwycięstw)\n`
 
             }
 
