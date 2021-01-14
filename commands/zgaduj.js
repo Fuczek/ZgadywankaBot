@@ -69,6 +69,12 @@ module.exports = {
                         message.reply('Druga liczba nie może być taka sama!')
                         return
                     }
+
+                    if (attemptsAmount > 100) {
+                        message.reply('Spróbuj z mniejszą ilością prób!')
+                        return
+                    }
+
                     randomNumber = getRandomInt(minNumber, maxNumber)
                     message.channel.send(`Podaj liczbę pomiędzy ${minNumber} i ${maxNumber}!`)
                 } else {
@@ -83,7 +89,7 @@ module.exports = {
         const filter = (m) => m.author.id === message.author.id
         const collector = new DiscordJS.MessageCollector(message.channel, filter, {
             max: attemptsAmount,
-            time: 1000 * 120 //120s
+            time: 1000 * 20 * attemptsAmount //120s
         })
 
 
