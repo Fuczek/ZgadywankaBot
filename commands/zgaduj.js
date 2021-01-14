@@ -5,7 +5,7 @@ const winratioSchema = require('../schemas/winratioSchema')
 
 module.exports = {
     minArgs: 0,
-    maxArgs: 2,
+    maxArgs: 3,
     callback: async ({message, args}) => {
         const guildId = message.guild.id
         const playerId = message.author.id
@@ -21,39 +21,64 @@ module.exports = {
         let minNumber
         let maxNumber
         let rankedMode
+        let attemptsAmount
 
-        if (args.length === 0) {
-            rankedMode = true
-            randomNumber = getRandomInt(0, 100)
-            minNumber = 0
-            maxNumber = 100
-            message.channel.send('Podaj liczbę pomiędzy 0 i 100!')
-
-        } else if (args.length === 1) {
-            message.reply('Wybierz dwie liczby (zakres) lub nie podawaj argumentów.')
-            return
-        } else {
-            if (!isNaN(Number(args[0])) && !isNaN(Number(args[1]))) {
-                minNumber = Number(args[0])
-                maxNumber = Number(args[1])
-                if (minNumber > maxNumber) {
-                    message.reply('Druga liczba nie może być mniejsza od pierwszej!')
-                    return
-                }
-                if (minNumber === maxNumber) {
-                    message.reply('Druga liczba nie może być taka sama!')
-                    return
-                }
-                randomNumber = getRandomInt(minNumber, maxNumber)
-                message.channel.send(`Podaj liczbę pomiędzy ${minNumber} i ${maxNumber}!`)
-            } else {
-                message.reply('Spróbuj użyć liczb.')
+        switch(args.length) {
+            case 0:
+                rankedMode = true
+                randomNumber = getRandomInt(0, 100)
+                minNumber = 0
+                maxNumber = 100
+                attemptsAmount = 7
+                message.channel.send('Podaj liczbę pomiędzy 0 i 100!')
+                break
+            case 1:
+                message.reply('Wybierz dwie liczby (zakres) lub nie podawaj argumentów.')
                 return
-            }
+            case 2:
+                if (!isNaN(Number(args[0])) && !isNaN(Number(args[1]))) {
+                    minNumber = Number(args[0])
+                    maxNumber = Number(args[1])
+                    attemptsAmount = 7
+                    if (minNumber > maxNumber) {
+                        message.reply('Druga liczba nie może być mniejsza od pierwszej!')
+                        return
+                    }
+                    if (minNumber === maxNumber) {
+                        message.reply('Druga liczba nie może być taka sama!')
+                        return
+                    }
+                    randomNumber = getRandomInt(minNumber, maxNumber)
+                    message.channel.send(`Podaj liczbę pomiędzy ${minNumber} i ${maxNumber}!`)
+                } else {
+                    message.reply('Spróbuj użyć liczb.')
+                    return
+                }
+                break
+            case 3:
+                if (!isNaN(Number(args[0])) && !isNaN(Number(args[1])) && !isNaN(Number(args[2]))) {
+                    minNumber = Number(args[0])
+                    maxNumber = Number(args[1])
+                    attemptsAmount = Number(args[2])
+
+                    if (minNumber > maxNumber) {
+                        message.reply('Druga liczba nie może być mniejsza od pierwszej!')
+                        return
+                    }
+                    if (minNumber === maxNumber) {
+                        message.reply('Druga liczba nie może być taka sama!')
+                        return
+                    }
+                    randomNumber = getRandomInt(minNumber, maxNumber)
+                    message.channel.send(`Podaj liczbę pomiędzy ${minNumber} i ${maxNumber}!`)
+                } else {
+                    message.reply('Spróbuj użyć liczb.')
+                    return
+                }
+
         }
         
-
-        let attemptsAmount = 7
+        
         let collected = 0
         const filter = (m) => m.author.id === message.author.id
         const collector = new DiscordJS.MessageCollector(message.channel, filter, {
