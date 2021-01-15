@@ -10,14 +10,14 @@ module.exports = {
         if (args.length === 0) {
                 players = await mongo().then(async mongoose => {
                     try {
-                        return await duelplayersSchema.find({guildId}).sort({playerElo:1})
+                        return await duelplayersSchema.find({guildId}).sort({playerElo:-1})
                     } finally {
                         mongoose.connection.close()
                     }
                 })
                 let text = 'Najlepsi dueliści:\nNick | Elo | Wygrane\n'
                 for (let i=0; i<players.length; i++) {
-                    text += `${i+1}. ${players[i].playerName} | ${players[i].playerElo}pts | ${players[i].wins}\n`
+                    text += `${i+1}. ${players[i].playerName}, ${players[i].playerElo}pts, ${players[i].wins} wygrane\n`
                 }
                 message.reply(text)
         }
