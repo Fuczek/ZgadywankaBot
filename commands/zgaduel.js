@@ -11,10 +11,11 @@ module.exports = {
         const guildId = message.guild.id
         const playerId = message.author.id
         const playerName = message.author.username
-
+        
         const duelId = args[0].slice(3, -1)
+        console.log(duelId, args[0], 'duel id')
+        
         const duelPlayer = message.guild.members.cache.get(duelId)
-
         if (duelPlayer && duelId !== playerId && duelId !== '798890747528085517') {
             console.log(message.guild.members.cache.get(duelId), 'a')
         } else if (duelId === playerId) {
