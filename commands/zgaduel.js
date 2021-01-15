@@ -144,7 +144,7 @@ module.exports = {
             if (guessesArray.length === 2) {
                 clearTimeout(timing)
                 collected++
-                const firstNumber = guessesArray[0]
+                const firstNumber = guessesArray[0] 
                 const secondNumber = guessesArray[1]
                 const minNumber = Math.min(firstNumber, secondNumber)
                 const maxNumber = Math.max(firstNumber, secondNumber)
@@ -277,6 +277,11 @@ Zdobył za tę grę ${eloGain} pkt i aktualnie posiada ${winnerStats.playerElo} 
                 let loser2Name = enemyName
                 
                 if (!loserId) {
+                    console.log(gameProgress)
+                    if (gameProgress.length < 1) {
+                        message.reply('Gra anulowana.')
+                        return
+                    }
                     await mongo().then(async mongoose => {
                         try {
                             let loser1result = await duelplayersSchema.find({guildId, playerId:loser1Id})
@@ -351,6 +356,11 @@ Zdobył za tę grę ${eloGain} pkt i aktualnie posiada ${winnerStats.playerElo} 
                     return
     
                 } else {
+                    console.log(gameProgress)
+                    if (gameProgress.length < 2) {
+                        message.reply('Gra anulowana.')
+                        return
+                    }
                     await mongo().then(async mongoose => {
                         try {
                             let loserresult = await duelplayersSchema.find({guildId, playerId:loserId})
