@@ -51,7 +51,7 @@ module.exports = {
         minNumber = 0
         maxNumber = 100
         attemptsAmount = 7
-        message.channel.send('Obydwoje podajcie liczbę pomiędzy 0 i 100! Na swoje odpowiedzi macie 30 sekund!')
+        message.channel.send('Obydwoje podajcie liczbę pomiędzy 0 i 100! Twój przeciwnik ma 60 sekund na odpowiedź. Na wasze kolejne wybory macie po 30 sekund.')
         
 
         const timer = () => {
@@ -65,7 +65,7 @@ module.exports = {
             time: 1000 * 240
         })
         
-        let timing = setTimeout(timer, 30000)
+        let timing = setTimeout(timer, 60000)
 
 
         let guessesArray = []
