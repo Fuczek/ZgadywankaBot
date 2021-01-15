@@ -16,7 +16,7 @@ module.exports = {
         const duelId = args[0].slice(3, -1)
         const duelPlayer = message.guild.members.cache.get(duelId)
 
-        if (duelPlayer && duelId !== playerId && duelId !== '799379654926401596') {
+        if (duelPlayer && duelId !== playerId && duelId !== '798890747528085517') {
             console.log(message.guild.members.cache.get(duelId), 'a')
         } else if (duelId === playerId) {
             message.reply('Nie możesz grać sam ze sobą!')
