@@ -1,6 +1,5 @@
 const DiscordJS = require('discord.js')
 const mongo = require('../mongo')
-const { findOneAndUpdate } = require('../schemas/duelplayersSchema')
 const duelplayersSchema = require('../schemas/duelplayersSchema')
 const winratioSchema = require('../schemas/winratioSchema')
 
