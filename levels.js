@@ -18,7 +18,7 @@ const addToDatabase = async () => {
     await mongo().then(async mongoose => {
         try {
             for (const [userId, messagesAmount] of Object.entries(messagesCache)) {
-                console.log(`${userId}: ${messagesAmount}`);
+/*                 console.log(`${userId}: ${messagesAmount}`) */
                 const result = await profileSchema.findOneAndUpdate({
                     userId
                 }, {
@@ -38,7 +38,7 @@ const addToDatabase = async () => {
     })
 }
 
-const countMessages = async (userId) => {
+const countMessages = async (guildId, userId) => {
     if (!messagesCache[userId]) {
         messagesCache[userId] = 1
     } else {
