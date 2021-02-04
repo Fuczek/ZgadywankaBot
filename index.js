@@ -1,6 +1,8 @@
 const DiscordJS = require('discord.js')
 const WOKCommands = require('wokcommands')
 require('dotenv').config()
+const levels = require('./levels')
+
 
 const client = new DiscordJS.Client({
     partials: ['MESSAGE', 'REACTION'],
@@ -18,6 +20,8 @@ client.on('ready', async () => {
         commandsDir: 'commands',
     })
         .setMongoPath(process.env.MONGO_URI)
+
+    levels(client)
     
 })
 
