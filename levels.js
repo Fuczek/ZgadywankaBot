@@ -3,7 +3,7 @@ const profileSchema = require('./schemas/profileSchema')
 let messagesCache = {}
 
 module.exports = (client) => {
-    setInterval(addToDatabase, 1000*3600)
+    setInterval(addToDatabase, 1000*1)
 
     client.on('message', message => {
         const { guild, member } = message
