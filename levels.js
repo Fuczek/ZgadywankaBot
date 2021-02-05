@@ -7,7 +7,9 @@ module.exports = (client) => {
 
     client.on('message', message => {
         const { guild, member } = message
-        countMessages(guild.id, member.id)
+        if (guild && member) {
+            countMessages(guild.id, member.id)
+        }
 /*         addXP(guild.id, member.id, 23) */
     })
 }
