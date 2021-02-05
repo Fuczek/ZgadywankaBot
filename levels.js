@@ -3,7 +3,7 @@ const profileSchema = require('./schemas/profileSchema')
 let messagesCache = {}
 
 module.exports = (client) => {
-    setInterval(addToDatabase, 1000*1)
+    setInterval(addToDatabase, 1000*300)
 
     client.on('message', message => {
         const { guild, member } = message
@@ -13,7 +13,7 @@ module.exports = (client) => {
 }
 
 const addToDatabase = async () => {
-    console.log(messagesCache, 'interval')
+/*     console.log(messagesCache, 'interval') */
 
     await mongo().then(async mongoose => {
         try {
