@@ -5,25 +5,30 @@ const reqString = {
     required: true
 }
 
-const profileSchema = mongoose.Schema({
+const racersSchema = mongoose.Schema({
     guildId: reqString,
     userId: reqString,
-    coins: {
+    username: reqString,
+    xp: {
         type: Number,
         default: 0
     },
-    xp: {
+    races: {
+        type: Number,
+        default: 0
+    },
+    wins: {
+        type: Number,
+        default: 0
+    },
+    loses: {
         type: Number,
         default: 0
     },
     level: {
         type: Number,
-        default: 1
-    },
-    messages: {
-        type: Number,
         default: 0
-    }
+    },
 })
 
-module.exports = mongoose.model('profiles', profileSchema)
+module.exports = mongoose.model('racers', racersSchema)
