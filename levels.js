@@ -1,6 +1,6 @@
 const mongo = require('./mongo')
 const racersSchema = require('./schemas/racersSchema')
-const xpData = require('./xpdata').getxpData()
+const xpData = require('./xpData').getxpData()
 let messagesCache = {}
 
 module.exports = (client) => {
