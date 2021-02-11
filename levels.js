@@ -24,7 +24,7 @@ const addToDatabase = async () => {
                 const username = messagesCache[userId][1]
                 //simulating a race for each of the players that posted something in the last hour
                 const resultInfo = simulateRace()
-                console.log(resultInfo)
+                /* console.log(resultInfo) */
                 const xpGain = resultInfo[0]
                 const raceResult = resultInfo[1]
 
@@ -86,7 +86,7 @@ const addToDatabase = async () => {
                     xpPercent = Math.floor(((xp-xpData[level-1])/(xpData[level]-xpData[level-1]))*10)
                 }
 
-                console.log(xpData[level], xp, xpPercent)
+                /* console.log(xpData[level], xp, xpPercent) */
 
                 let nextLevel = level + 1
                 if (level < 10) {
@@ -97,7 +97,7 @@ const addToDatabase = async () => {
                 }
                 
                 //showing your exp
-                console.log(`${level} │${`█`.repeat(xpPercent)}${` `.repeat(10-xpPercent)}│ ${nextLevel}`)
+               /*  console.log(`${level} │${`█`.repeat(xpPercent)}${` `.repeat(10-xpPercent)}│ ${nextLevel}`) */
 
             }
             messagesCache = {}
@@ -133,7 +133,7 @@ const countMessages = async (guildId, userId, username) => {
         messagesCache[userId][3] += 1
     }
 
-    console.log(messagesCache)
+    /* console.log(messagesCache) */
 }
 
 
