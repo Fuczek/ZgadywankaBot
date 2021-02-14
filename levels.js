@@ -4,7 +4,7 @@ const xpData = require('./xpData').getxpData()
 let messagesCache = {}
 
 module.exports = (client) => {
-    setInterval(addToDatabase, 1000*600)
+    setInterval(addToDatabase, 1000*5)
     client.on('message', message => {
 
         const { guild, member} = message
@@ -22,8 +22,17 @@ const addToDatabase = async () => {
 
                 const guildId = messagesCache[userId][0]
                 const username = messagesCache[userId][1]
+
+
+                const driverInfo = await racersSchema.find({userId, guildId})
                 //simulating a race for each of the players that posted something in the last hour
-                const resultInfo = simulateRace()
+                /* let a = 0
+                while (a < 30) {
+                    const resultInfo = require('./race').simulateRace(driverInfo[0].level)
+                    ++a
+                } */
+
+                const resultInfo = require('./race').simulateRace(driverInfo[0].level)
                 /* console.log(resultInfo) */
                 const xpGain = resultInfo[0]
                 const raceResult = resultInfo[1]
@@ -107,7 +116,7 @@ const addToDatabase = async () => {
         }
     })
 }
-
+/* 
 const simulateRace = () => {
     let randomNumber = Math.floor(Math.random()*10)
     let expAmount = 0
@@ -122,7 +131,7 @@ const simulateRace = () => {
 
     return [expAmount, raceResult]
 }
-
+ */
 
 
 
