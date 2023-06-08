@@ -10,12 +10,12 @@ Commands:
 
 !zgaduj - starts the game sequence
 
-![zgaduj](readme\zgaduj_command.png)
+![zgaduj](readme/zgaduj_command.png)
 
 !zgaduel @player - allows to challenge another player
 
-![zgaduel](readme\zgaduel_command.png)
+![zgaduel](readme/zgaduel_command.png)
 
 !topka - shows the leaderboard.
 
-![zgaduj](readme\topka_command.png)
+![zgaduj](readme/topka_command.png)
